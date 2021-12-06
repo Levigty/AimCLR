@@ -81,6 +81,7 @@ Please cite our paper if you find this repository useful in your resesarch:
 ```
 
 ## Acknowledgement
+The framework of our code is extended from the following repositories. We sincerely thank the authors for releasing the codes.
 - The framework of our code is based on [CrosSCLR](https://github.com/LinguoLi/CrosSCLR).
 - The encoder is based on [ST-GCN](https://github.com/yysijie/st-gcn/blob/master/OLD_README.md).
 
