@@ -59,7 +59,7 @@ We release several trained models in [released_model](https://drive.google.com/d
 | AimCLR-joint  |      74.34      |      79.68       |       83.43        |
 | AimCLR-motion |      68.68      |      71.83       |       72.00        |
 |  AimCLR-bone  |      71.87      |      77.02       |       82.03        |
-|   3s-AimCLR   |      79.18      |      84.02       |       87.79        |
+|   3s-AimCLR   |    **79.18**    |    **84.02**     |     **87.79**      |
 
 ## Visualization
 
