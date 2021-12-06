@@ -1,0 +1,59 @@
+work_dir: /data/gty/AAAI_github/pkup1cs/aimclr_joint/linear_eval
+
+# weights: /data/gty/released_model/pkup1cs_joint.pt
+weights: /data/gty/AAAI_github/pkup1cs/aimclr_joint/pretext/epoch300_model.pt
+ignore_weights: [encoder_q.fc, encoder_k, queue]
+
+# feeder
+train_feeder: feeder.ntu_feeder.Feeder_single
+train_feeder_args:
+  data_path: /data/gty/action_dataset/pku_part1_frame50/xsub/train_position.npy
+  label_path: /data/gty/action_dataset/pku_part1_frame50/xsub/train_label.pkl
+  shear_amplitude: -1
+  temperal_padding_ratio: -1
+  mmap: True
+test_feeder: feeder.ntu_feeder.Feeder_single
+test_feeder_args:
+  data_path: /data/gty/action_dataset/pku_part1_frame50/xsub/val_position.npy
+  label_path: /data/gty/action_dataset/pku_part1_frame50/xsub/val_label.pkl
+  shear_amplitude: -1
+  temperal_padding_ratio: -1
+  mmap: True
+
+# model
+model: net.aimclr.AimCLR
+model_args:
+  base_encoder: net.st_gcn.Model
+  pretrain: False
+  # feature_dim: 128
+  # queue_size: 32768
+  # momentum: 0.999
+  # Temperature: 0.07
+  # mlp: True
+  in_channels: 3
+  hidden_channels: 16
+  hidden_dim: 256
+  num_class: 51
+  dropout: 0.5
+  graph_args:
+    layout: 'ntu-rgb+d'
+    strategy: 'spatial'
+  edge_importance_weighting: True
+
+# optim
+nesterov: False
+weight_decay: 0.0
+base_lr: 3.
+optimizer: SGD
+step: [80]
+
+# training
+device: [2]
+batch_size: 128
+test_batch_size: 128
+num_epoch: 100
+stream: 'joint'
+
+# log
+save_interval: -1
+eval_interval: 5
