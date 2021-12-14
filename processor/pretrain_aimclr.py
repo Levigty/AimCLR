@@ -92,7 +92,6 @@ class AimCLR_Processor(PT_Processor):
                     self.model.module.update_ptr(output1.size(0))
                 else:
                     self.model.update_ptr(output1.size(0))
-                # loss1 = torch.log((F.softmax(output1, dim=1) * mask).sum(1))
                 loss1 = - (F.log_softmax(output1, dim=1) * mask).sum(1) / mask.sum(1)
                 loss1 = loss1.mean()
                 loss2 = -torch.mean(torch.sum(torch.log(output2) * target2, dim=1))  # DDM loss
