@@ -35,6 +35,7 @@ if __name__ == '__main__':
 
     processors['pretrain_aimclr'] = import_class('processor.pretrain_aimclr.AimCLR_Processor')
     processors['linear_evaluation'] = import_class('processor.linear_evaluation.LE_Processor')
+    processors['finetune_evaluation'] = import_class('processor.finetune_evaluation.FT_Processor')
 
     # add sub-parser
     subparsers = parser.add_subparsers(dest='processor')
